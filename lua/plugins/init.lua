@@ -61,6 +61,14 @@ return {
 
   -- These are some examples, uncomment them if you want to see them work!
   {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require("nvchad.configs.lspconfig").defaults()
+      require("configs.lspconfig")
+    end
+  },
+  -- Mason
+  {
     "williamboman/mason.nvim",
     cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
     opts = function()
@@ -80,8 +88,6 @@ return {
       vim.g.mason_binaries_list = opts.ensure_installed
     end,
   },
-  -- Mason Lib
-  
   --
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
