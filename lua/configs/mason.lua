@@ -1,4 +1,4 @@
 local options = {
-  ensure_installed = { "lua-language-server", "stylua", "gopls" }
+  ensure_installed = { "lua-language-server", "stylua", "gopls", "delve" }
 }
 return options
