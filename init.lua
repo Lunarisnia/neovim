@@ -40,11 +40,27 @@ end)
 
 require("go").setup()
 
+-- Format Go Codes after every saves
 local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*.go",
   callback = function()
-   require('go.format').goimports()
+    require("go.format").goimports()
   end,
   group = format_sync_grp,
 })
+
+-- Set Default Shell
+if vim.loop.os_uname().sysname == "Windows_NT" then
+  -- This modify the :terminal command
+  vim.g.terminal_emulator = "powershell"
+
+  -- This modify the ! operator shell
+  vim.opt.shell = "powershell"
+  vim.opt.shellcmdflag =
+    "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
+  vim.opt.shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait"
+  vim.opt.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+  vim.opt.shellquote = ""
+  vim.opt.shellxquote = ""
+end
