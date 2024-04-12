@@ -51,16 +51,16 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- Set Default Shell
-if vim.loop.os_uname().sysname == "Windows_NT" then
-  -- This modify the :terminal command
-  vim.g.terminal_emulator = "powershell"
-
-  -- This modify the ! operator shell
-  vim.opt.shell = "powershell"
-  vim.opt.shellcmdflag =
-    "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
-  vim.opt.shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait"
-  vim.opt.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
-  vim.opt.shellquote = ""
-  vim.opt.shellxquote = ""
-end
+-- if vim.loop.os_uname().sysname == "Windows_NT" then
+--   -- This modify the :terminal command
+--   vim.g.terminal_emulator = "powershell"
+--
+--   -- This modify the ! operator shell
+--   vim.opt.shell = "powershell"
+--   vim.opt.shellcmdflag =
+--     "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
+--   vim.opt.shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait"
+--   vim.opt.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+--   vim.opt.shellquote = ""
+--   vim.opt.shellxquote = ""
+-- end
