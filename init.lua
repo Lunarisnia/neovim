@@ -40,6 +40,7 @@ end)
 
 require("go").setup()
 
+-- AUTOCOMMANDS -----------------------
 -- Format Go Codes after every saves
 local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -48,6 +49,14 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     require("go.format").goimports()
   end,
   group = format_sync_grp,
+})
+
+-- Format Rust Codes after every saves
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = "*.rs",
+  callback = function()
+    vim.cmd 'silent !cargo fmt'
+  end,
 })
 
 -- Set Default Shell
