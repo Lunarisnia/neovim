@@ -123,10 +123,8 @@ return {
     config = function()
       local map = vim.keymap.set
 
-      -- vim.g.rustfmt_fail_silently = 1
-      -- vim.g.rustfmt_command = "rustfmt"
       map("t", "<F5>", "cargo run<CR>")
-      print "Config Loaded"
+      print "Rust Config Loaded :)"
     end,
   },
 }
