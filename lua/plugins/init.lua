@@ -120,5 +120,11 @@ return {
     "mrcjkb/rustaceanvim",
     version = "^4", -- Recommended
     ft = { "rust" },
+    config = function()
+      local map = vim.keymap.set
+
+      map("t", "<F5>", "cargo run<CR>")
+      print "Config Loaded"
+    end,
   },
 }
